@@ -1,6 +1,6 @@
 # Machine Learning Practice Projects
 
-This repository contains hands-on machine learning practice work in Python. It includes exploratory data analysis, preprocessing, feature engineering, supervised learning models, ensemble learning, hyperparameter tuning, and a small Streamlit app that uses saved model artifacts for heart disease prediction.
+This repository contains hands-on machine learning practice work in Python. It includes exploratory data analysis, preprocessing, feature engineering, supervised learning models, unsupervised learning, ensemble learning, hyperparameter tuning, and a small Streamlit app that uses saved model artifacts for heart disease prediction.
 
 ## Repository Structure
 
@@ -21,13 +21,16 @@ This repository contains hands-on machine learning practice work in Python. It i
 |   |-- knn_model.pkl
 |   |-- project_01.ipynb
 |   `-- scaler.pkl
-`-- project_01/
-    |-- practice_01/
-    |   |-- 01.ipynb
-    |   `-- insurance.csv
-    `-- practice_02/
-        |-- 02.ipynb
-        `-- heart.csv
+|-- project_01/
+|   |-- practice_01/
+|   |   |-- 01.ipynb
+|   |   `-- insurance.csv
+|   `-- practice_02/
+|       |-- 02.ipynb
+|       `-- heart.csv
+`-- unsupervised_learning/
+    |-- PCA.ipynb
+    `-- k_means_implementation.ipynb
 ```
 
 ## Projects and Notebooks
@@ -195,6 +198,25 @@ Saved notebook results:
 | Gradient Boosting Classifier | `1.0` |
 | XGBoost Classifier | `1.0` |
 
+### 7. Unsupervised Learning
+
+**Notebooks:**  
+`unsupervised_learning/k_means_implementation.ipynb`  
+`unsupervised_learning/PCA.ipynb`
+
+Clustering and dimensionality reduction practice using generated datasets.
+
+Work covered:
+
+- K-Means clustering on synthetic blob data.
+- Elbow method using inertia values to choose the number of clusters.
+- Cluster visualization with seaborn scatter plots.
+- Two-moons dataset generation with `make_moons`.
+- Comparison of K-Means and DBSCAN clustering behavior on non-linear data.
+- DBSCAN clustering with `eps` and `min_samples`.
+- PCA dimensionality reduction from 5 features to 2 principal components.
+- PCA visualization using `PC1` and `PC2`.
+
 ## Libraries Used
 
 - Python
@@ -250,6 +272,7 @@ The Streamlit app expects these files to be present in the `project` folder:
 - Cross-validation
 - Hyperparameter tuning with grid search and randomized search
 - Ensemble learning with stacking, bagging, and boosting
+- Unsupervised learning with K-Means, DBSCAN, and PCA
 - Model serialization with Joblib
 - Basic Streamlit app development
 
