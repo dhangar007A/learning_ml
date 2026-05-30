@@ -1,16 +1,28 @@
 # Machine Learning Practice Projects
 
-This repository contains hands-on machine learning practice work in Python. It includes exploratory data analysis, preprocessing, feature engineering, supervised learning models, unsupervised learning, ensemble learning, hyperparameter tuning, and a small Streamlit app that uses saved model artifacts for heart disease prediction.
+This repository contains hands-on machine learning practice work in Python. It includes exploratory data analysis, preprocessing, feature engineering, supervised learning models, NLP, unsupervised learning, ensemble learning, hyperparameter tuning, and Streamlit apps that use saved model artifacts for prediction.
 
 ## Repository Structure
 
 ```text
 .
 |-- README.md
+|-- requirements.txt
 |-- ensamble_learning/
 |   `-- implementation.ipynb
 |-- model_tuning/
 |   `-- 01.ipynb
+|-- nlp/
+|   |-- 01.ipynb
+|   |-- app.py
+|   |-- bag_of_words.ipynb
+|   |-- data/
+|   |   `-- train.txt
+|   |-- models/
+|   |   |-- emotion_mapping.pkl
+|   |   |-- emotion_model.pkl
+|   |   `-- tfidf_vectorizer.pkl
+|   `-- tf_idf.ipynb
 |-- practice_03/
 |   `-- logistic_regression/
 |       `-- 01.ipynb
@@ -147,7 +159,39 @@ Saved artifacts:
 - `project/scaler.pkl`
 - `project/columns.pkl`
 
-### 5. Model Tuning with Iris
+### 5. NLP Emotion Detection App
+
+**Notebook:** `nlp/01.ipynb`  
+**App:** `nlp/app.py`  
+**Dataset:** `nlp/data/train.txt`
+
+Text classification project for predicting emotions from user-entered sentences.
+
+Work covered:
+
+- Loading semicolon-separated text and emotion labels.
+- Text preprocessing with lowercasing, punctuation removal, number removal, emoji/non-ASCII removal, tokenization, and stopword removal.
+- Label mapping for emotion names.
+- Bag-of-Words and TF-IDF feature extraction.
+- Naive Bayes and Logistic Regression model comparison.
+- Saving the best model, TF-IDF vectorizer, and emotion mapping with Joblib.
+- Streamlit app for entering text and predicting the emotion.
+
+Saved notebook results:
+
+| Model | Features | Accuracy |
+| --- | --- | ---: |
+| Multinomial Naive Bayes | Bag-of-Words | `0.7678` |
+| Multinomial Naive Bayes | TF-IDF | `0.6609` |
+| Logistic Regression | TF-IDF | `0.8616` |
+
+Saved artifacts:
+
+- `nlp/models/emotion_model.pkl`
+- `nlp/models/tfidf_vectorizer.pkl`
+- `nlp/models/emotion_mapping.pkl`
+
+### 6. Model Tuning with Iris
 
 **Notebook:** `model_tuning/01.ipynb`  
 **Dataset:** Iris dataset loaded from seaborn
@@ -170,7 +214,7 @@ Saved notebook highlights:
 - Best displayed GridSearchCV mean test score: `0.98`
 - Best displayed RandomizedSearchCV mean test score: `0.98`
 
-### 6. Ensemble Learning with Iris
+### 7. Ensemble Learning with Iris
 
 **Notebook:** `ensamble_learning/implementation.ipynb`  
 **Dataset:** Iris dataset loaded from seaborn
@@ -198,7 +242,7 @@ Saved notebook results:
 | Gradient Boosting Classifier | `1.0` |
 | XGBoost Classifier | `1.0` |
 
-### 7. Unsupervised Learning
+### 8. Unsupervised Learning
 
 **Notebooks:**  
 `unsupervised_learning/k_means_implementation.ipynb`  
@@ -236,7 +280,7 @@ Work covered:
 Install the common dependencies:
 
 ```bash
-pip install numpy pandas matplotlib seaborn scipy scikit-learn streamlit joblib xgboost notebook
+pip install -r requirements.txt
 ```
 
 Open the notebooks with Jupyter:
@@ -258,6 +302,18 @@ The Streamlit app expects these files to be present in the `project` folder:
 - `scaler.pkl`
 - `columns.pkl`
 
+Run the Streamlit emotion detection app:
+
+```bash
+streamlit run nlp/app.py
+```
+
+The emotion detection app expects these files to be present:
+
+- `nlp/models/emotion_model.pkl`
+- `nlp/models/tfidf_vectorizer.pkl`
+- `nlp/models/emotion_mapping.pkl`
+
 ## Learning Topics Covered
 
 - Exploratory data analysis
@@ -278,9 +334,8 @@ The Streamlit app expects these files to be present in the `project` folder:
 
 ## Possible Next Improvements
 
-- Add a `requirements.txt` file.
 - Organize notebook names with descriptive titles.
 - Move reusable preprocessing steps into Python scripts.
-- Add validation and clearer probability output to the Streamlit app.
+- Move reusable NLP preprocessing into a shared Python module used by both the notebook and app.
 - Add cross-validation results for the heart disease app model selection.
 - Add a short note to each notebook explaining the dataset source and final conclusion.
